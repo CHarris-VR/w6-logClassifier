@@ -1,8 +1,10 @@
+# Start variables
 failed_logins = 0
 successful_logins = 0
 internal = 0
 external = 0
 
+# Start additional variables for appending
 users = []
 ips = []
 results = []
