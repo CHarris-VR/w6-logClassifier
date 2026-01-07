@@ -4,3 +4,9 @@ with open("logins.txt") as f:
     lines = f.readlines()
 
 print(f"Loaded {len(lines)} login records.")
+
+# Stores data into a list
+for line in lines:
+    parts = line.strip().split()
+    # parts = [username, ip, result]
+
