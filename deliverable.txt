@@ -1,0 +1,4 @@
+The link to my assignment can be found at: 
+
+https://github.com/CHarris-VR/w6-logClassifier
+
