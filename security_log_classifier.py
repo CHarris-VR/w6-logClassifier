@@ -1,25 +1,35 @@
-# Opens the text file to read the data from it
+failed_logins = 0
+successful_logins = 0
+internal = 0
+external = 0
+
+users = []
+ips = []
+results = []
 
 with open("logins.txt") as f:
     lines = f.readlines()
 
 print(f"Loaded {len(lines)} login records.")
 
-# Stores data into lists
 for line in lines:
-    parts = line.strip().split()
-    # parts = [username, ip, result]
+    username, ip, result = line.strip().split()
 
+    users.append(username)
+    ips.append(ip)
+    results.append(result)
 
-# Added this for the loop below
-failed_logins = 0
-successful_logins = 0
+    # Count internal vs external
+    if ip.startswith(("192.168.", "10.")):
+        internal += 1
+    else:
+        external += 1
 
-# if failure, add a failed logins counter + 1 else success counter + 1
+    # Count success vs failure
+    if result == "FAILURE":
+        failed_logins += 1
+    else:
+        successful_logins += 1
 
-if parts[2] == "FAILURE":
-    failed_logins += 1
-else:
-    successful_logins += 1
-
-print("successful logins: ", successful_logins)
+print("Interal:", internal, "External:", external)
+print("Success:", successful_logins, "Failure:", failed_logins)
